@@ -10,6 +10,10 @@ public class Chunker {
         to = to;
     }
 
+    public void StartChonk() {
+
+    }
+
     public static long DirectorySize(DirectoryInfo directory) {
         long size = 0;
         FileInfo[] files = directory.GetFiles();
