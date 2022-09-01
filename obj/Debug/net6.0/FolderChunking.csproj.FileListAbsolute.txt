@@ -1,0 +1,15 @@
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.csproj.AssemblyReference.cache
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.GeneratedMSBuildEditorConfig.editorconfig
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.AssemblyInfoInputs.cache
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.AssemblyInfo.cs
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.csproj.CoreCompileInputs.cache
+/Users/markmarjanovic/Desktop/Files/FolderChunking/bin/Debug/net6.0/FolderChunking
+/Users/markmarjanovic/Desktop/Files/FolderChunking/bin/Debug/net6.0/FolderChunking.deps.json
+/Users/markmarjanovic/Desktop/Files/FolderChunking/bin/Debug/net6.0/FolderChunking.runtimeconfig.json
+/Users/markmarjanovic/Desktop/Files/FolderChunking/bin/Debug/net6.0/FolderChunking.dll
+/Users/markmarjanovic/Desktop/Files/FolderChunking/bin/Debug/net6.0/FolderChunking.pdb
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.dll
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/refint/FolderChunking.dll
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.pdb
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/FolderChunking.genruntimeconfig.cache
+/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/Debug/net6.0/ref/FolderChunking.dll
