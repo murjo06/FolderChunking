@@ -9,19 +9,19 @@ internal class Program {
 
         bool saved = File.Exists("paths.txt");
         string saves = File.ReadAllText("paths.txt");
-        string[] savesArray = new string[2];
+        string[] savesArray = new string[saves.Split('&').Length];
         if(saved) {
-            
+            savesArray = saves.Split('&');
         }
-        Console.Write("Please enter the source location: ");
+        Console.Write("Please enter the source directory: ");
         string source = Console.ReadLine();
-        Console.Write("Please enter the target location: ");
+        Console.Write("Please enter the target directory: ");
         string target = Console.ReadLine();
-        Console.Write("Would you live to save your location preferences? y/n  ");
+        Console.Write("Would you like to save your directory preferences? y/n  ");
         string saveString = Console.ReadLine();
         while(true) {
             if(saveString != "y" && saveString != "n") {
-                Console.Write("Would you live to save your location preferences? y/n  ");
+                Console.Write("Would you live to save your directory preferences? y/n  ");
                 saveString = Console.ReadLine();
             } else {
                 break;
