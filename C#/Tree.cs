@@ -3,7 +3,7 @@ namespace System {
         public TreeNode[] nodes;
         public int Length {get {return nodes.Length;}}
 
-        public Tree(dynamic[] values, Nullable<int>[] parent) {
+        public Tree(dynamic[] values, Nullable<int>[] parents) {
             nodes = new TreeNode[values.Length];
             var i = 0;
             var currentParent;
