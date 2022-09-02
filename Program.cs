@@ -7,6 +7,12 @@ internal class Program {
         // TODO : add save file reading
         // TODO : add save file overriding without data loss
 
+        bool saved = File.Exists("paths.txt");
+        string saves = File.ReadAllText("paths.txt");
+        string[] savesArray = new string[2];
+        if(saved) {
+            
+        }
         Console.Write("Please enter the source location: ");
         string source = Console.ReadLine();
         Console.Write("Please enter the target location: ");
