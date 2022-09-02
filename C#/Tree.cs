@@ -12,8 +12,6 @@ namespace System {
             }
         }
 
-        public TreeNode GetNode(int index) {
-
-        }
+        public TreeNode GetNode(int index) => nodes[index];
     }
 }
