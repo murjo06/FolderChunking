@@ -1,10 +1,10 @@
 #include <string>
 class chunker {
     public:
-        string from;
-        string to;
+        std::string from;
+        std::string to;
     
-        chunker(string from, string to) {
+        chunker(std::string from, std::string to) {
             from = from;
             to = to;
         }
