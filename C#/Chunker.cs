@@ -12,7 +12,7 @@ namespace System.IO {
 
         public void GenerateTree() {
             bool done = false;
-            object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories)];
+            object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories).Length];
             int index = 0;
             while(!done) {
                 FileInfo[] files = from.GetFiles();
