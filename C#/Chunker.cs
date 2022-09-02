@@ -13,7 +13,7 @@ namespace System.IO {
         public void GenerateTree() {
             bool done = false;
             object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories).Length];
-            Nullable<int>[] parents = new int[values.Length];
+            Nullable<int>[] parents = new Nullable<int>[values.Length];
             values[0] = from.FullName;
             parents[0] = null;
             int index = 1;
@@ -26,8 +26,8 @@ namespace System.IO {
                     continue;
                 }
                 for(int i = 0; i < currentValues.Length; i++) {
-                    values[index + i] = currentValues[i].FullName;
-                    parents[index + i] = index;
+                    values[index + i] = currentValues[i];
+                    parents[index + i] = new Nullable<int>(index);
                 }
                 index += currentValues.Length;
             }
