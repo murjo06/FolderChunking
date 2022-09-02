@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/markmarjanovic/Desktop/Files/FolderChunking/C#/FolderChunking.csproj": {}
+    "/Users/markmarjanovic/Desktop/Files/FolderChunking/FolderChunking.csproj": {}
   },
   "projects": {
-    "/Users/markmarjanovic/Desktop/Files/FolderChunking/C#/FolderChunking.csproj": {
+    "/Users/markmarjanovic/Desktop/Files/FolderChunking/FolderChunking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/markmarjanovic/Desktop/Files/FolderChunking/C#/FolderChunking.csproj",
+        "projectUniqueName": "/Users/markmarjanovic/Desktop/Files/FolderChunking/FolderChunking.csproj",
         "projectName": "FolderChunking",
-        "projectPath": "/Users/markmarjanovic/Desktop/Files/FolderChunking/C#/FolderChunking.csproj",
+        "projectPath": "/Users/markmarjanovic/Desktop/Files/FolderChunking/FolderChunking.csproj",
         "packagesPath": "/Users/markmarjanovic/.nuget/packages/",
-        "outputPath": "/Users/markmarjanovic/Desktop/Files/FolderChunking/C#/obj/",
+        "outputPath": "/Users/markmarjanovic/Desktop/Files/FolderChunking/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/markmarjanovic/.nuget/NuGet/NuGet.Config"
