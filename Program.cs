@@ -9,9 +9,10 @@ internal class Program {
 
         bool saved = File.Exists("paths.txt");
         string saves = File.ReadAllText("paths.txt");
-        string[] savesArray = new string[saves.Split('&').Length];
+        string[] savesArray;
+        try {savesArray = new string[saves.Split('&').Length];} catch { }
         if(saved) {
-            savesArray = saves.Split('&');
+            try {savesArray = saves.Split('&');} catch { }
         }
         Console.Write("Please enter the source directory: ");
         string source = Console.ReadLine();
