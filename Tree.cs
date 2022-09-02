@@ -3,8 +3,10 @@ namespace System {
         public TreeNode[] nodes;
 
         public Tree(int[] values) {
+            var i = 0;
             foreach(int value in values) {
-                new TreeNode(value);
+                nodes[i] = new TreeNode(value, this);
+                i++;
             }
         }
     }

@@ -1,9 +1,12 @@
 namespace System {
     public class TreeNode {
-        public object value;
+        public dynamic value;
+        public int[] location;
+        public Tree tree;
 
-        public TreeNode(object value) {
+        public TreeNode(dynamic value, Tree tree) {
             this.value = value;
+            this.tree = tree;
         }
     }
 }
