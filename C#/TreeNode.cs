@@ -1,9 +1,8 @@
 namespace System {
     public struct TreeNode {
-        public dynamic value;
+        public object value;
         public Tree tree;
         public Nullable<int> parent;
-        public int numuricValue;
 
         public TreeNode(dynamic value, Tree tree) {
             this.value = value;
