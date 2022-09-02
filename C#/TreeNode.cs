@@ -3,6 +3,7 @@ namespace System {
         public dynamic value;
         public Tree tree;
         public Nullable<TreeNode> parent;
+        public int numuricValue;
 
         public TreeNode(dynamic value, Tree tree) {
             this.value = value;
