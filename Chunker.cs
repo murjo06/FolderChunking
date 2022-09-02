@@ -31,11 +31,13 @@ namespace System.IO {
                 }
                 index += currentValues.Length;
             }
+            tree = new Tree(values, parents);
         }
         public void StartChonk() {
             TransferFiles(from, to);
         }
-        public void TransferFiles(DirectoryInfo source, DirectoryInfo target) {
+
+        public static void TransferFiles(DirectoryInfo source, DirectoryInfo target) {
             if (source.FullName.ToLower() == target.FullName.ToLower()) {
                 return;
             }
@@ -50,7 +52,6 @@ namespace System.IO {
                 TransferFiles(directorySourceSub, nextTargetSubDir);
             }
         }
-    
         public static long DirectorySize(DirectoryInfo directory) {
             long size = 0;
             FileInfo[] files = directory.GetFiles();
