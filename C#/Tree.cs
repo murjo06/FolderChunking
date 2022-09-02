@@ -7,11 +7,7 @@ namespace System {
             nodes = new TreeNode[values.Length];
             var i = 0;
             foreach(int value in values) {
-                if(parents[i] == i) {
-                    nodes[i] = new TreeNode(value, this, parents[i]);
-                    continue;
-                }
-                nodes[i] = new TreeNode(value, this);
+                nodes[i] = new TreeNode(value, this, parents[i]);
                 i++;
             }
         }
