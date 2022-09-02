@@ -13,5 +13,11 @@ namespace System {
         }
 
         public TreeNode GetNode(int index) => nodes[index];
+        public int[] GetNodeLocation(TreeNode node) {
+            bool found = false;
+            while(!found) {
+                
+            }
+        }
     }
 }
