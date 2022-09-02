@@ -33,7 +33,7 @@ namespace System.IO {
             }
         }
         public void StartChonk() {
-        
+            TransferFiles(from, to);
         }
         public void TransferFiles(DirectoryInfo source, DirectoryInfo target) {
             if (source.FullName.ToLower() == target.FullName.ToLower()) {
