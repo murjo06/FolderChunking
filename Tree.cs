@@ -1,5 +1,5 @@
 namespace System {
-    public class Tree {
+    public struct Tree {
         public TreeNode[] nodes;
 
         public Tree(int[] values) {
