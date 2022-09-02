@@ -7,7 +7,6 @@ internal class Program {
         // TODO : add save file reading
         // TODO : add save file overriding without data loss
 
-        Chunker chunker = new Chunker(@"/Users/markmarjanovic/Desktop/Files/FolderChunking", @"/Users/markmarjanovic/Desktop/Files/test");
         Console.Write("Please enter the source location: ");
         string source = Console.ReadLine();
         Console.Write("Please enter the target location: ");
