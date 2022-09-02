@@ -2,7 +2,7 @@ namespace System {
     public struct TreeNode {
         public dynamic value;
         public Tree tree;
-        public Nullable<TreeNode> parent;
+        public Nullable<int> parent;
         public int numuricValue;
 
         public TreeNode(dynamic value, Tree tree) {
