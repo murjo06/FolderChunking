@@ -10,7 +10,7 @@ namespace System {
             this.tree = tree;
             parent = null;
         }
-        public TreeNode(dynamic value, Tree tree, TreeNode parent) {
+        public TreeNode(dynamic value, Tree tree, int parent) {
             this.value = value;
             this.tree = tree;
             this.parent = parent;
