@@ -1,17 +1,26 @@
 namespace System.IO {
     using System;
     public class Chunker {
-        public string from;
-        public string to;
+        public DirectoryInfo from;
+        public DirectoryInfo to;
         public Tree tree;
     
         public Chunker(string from, string to) {
-            from = from;
-            to = to;
+            this.from = new DirectoryInfo(from);
+            this.to = new DirectoryInfo(to);
         }
 
         public void GenerateTree() {
-            tree = new Tree();
+            bool done = false;
+            object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories)];
+            int index = 0;
+            while(!done) {
+                FileInfo[] files = from.GetFiles();
+                for(int i = 0; i < files.Length; i++) {
+                    index++;
+                    values[index] = files[i].FullName;
+                }
+            }
         }
         public void StartChonk() {
         
@@ -24,7 +33,7 @@ namespace System.IO {
                 Directory.CreateDirectory(target.FullName);
             }
             foreach (FileInfo file in source.GetFiles()) {
-                file.CopyTo(Path.Combine(target.ToString(), fi.Name), true);
+                file.CopyTo(Path.Combine(target.ToString(), file.Name), true);
             }
             foreach (DirectoryInfo directorySourceSub in source.GetDirectories()) {
                 DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(directorySourceSub.Name);
