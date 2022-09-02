@@ -21,11 +21,15 @@ namespace System.IO {
                 string[] files = Directory.GetFiles(from.FullName, "*", SearchOption.TopDirectoryOnly);
                 string[] directories = Directory.GetDirectories(from.FullName, "*", SearchOption.TopDirectoryOnly);
                 string[] currentValues = new string[files.Length + directories.Length];
-                for(int i = 0; i < files.Length; i++) {
-                    values[index + i] = files[i].FullName;
+                if(currentValues.Length == 0) {
+                    done = true;
+                    continue;
+                }
+                for(int i = 0; i < currentValues.Length; i++) {
+                    values[index + i] = currentValues[i].FullName;
                     parents[index + i] = index;
                 }
-                index += files.Length;
+                index += currentValues.Length;
             }
         }
         public void StartChonk() {
