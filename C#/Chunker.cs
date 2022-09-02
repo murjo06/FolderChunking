@@ -13,13 +13,19 @@ namespace System.IO {
         public void GenerateTree() {
             bool done = false;
             object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories).Length];
-            int index = 0;
+            Nullable<int>[] parents = new int[values.Length];
+            values[0] = from.FullName;
+            parents[0] = null;
+            int index = 1;
             while(!done) {
-                FileInfo[] files = from.GetFiles();
+                string[] files = Directory.GetFiles(from.FullName, "*", SearchOption.TopDirectoryOnly);
+                string[] directories = Directory.GetDirectories(from.FullName, "*", SearchOption.TopDirectoryOnly);
+                string[] currentValues = new string[files.Length + directories.Length];
                 for(int i = 0; i < files.Length; i++) {
-                    index++;
-                    values[index] = files[i].FullName;
+                    values[index + i] = files[i].FullName;
+                    parents[index + i] = index;
                 }
+                index += files.Length;
             }
         }
         public void StartChonk() {
