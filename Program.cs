@@ -3,10 +3,6 @@ using System.IO;
 
 internal class Program {
     public static void Main(string[] args) {
-
-        // TODO : add save file reading
-        // TODO : add save file overriding without data loss
-
         bool saved = File.Exists("paths.txt");
         bool useSave = false;
         string saves = "";
