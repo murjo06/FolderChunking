@@ -8,26 +8,81 @@ internal class Program {
         // TODO : add save file overriding without data loss
 
         bool saved = File.Exists("paths.txt");
-        string saves = File.ReadAllText("paths.txt");
-        string[] savesArray;
-        try {savesArray = new string[saves.Split('&').Length];} catch { }
+        bool useSave = false;
+        string saves = "";
+        string[] savesArray = new string[2];
         if(saved) {
-            try {savesArray = saves.Split('&');} catch { }
+            saves = File.ReadAllText("paths.txt");
+            try { 
+                savesArray = saves.Split('&');
+                if(savesArray.Length > 1 && savesArray[0] != "" && savesArray[1] != "") {
+                    Console.Write("Usable save file detected. Would you like to use it's data? y/n  ");
+                    string useSaveString = Console.ReadLine();
+                    while(true) {
+                        if(useSaveString != "y" && useSaveString != "n") {
+                            Console.Write("Usable save file detected. Would you like to use it's data? y/n  ");
+                            useSaveString = Console.ReadLine();
+                        } else {
+                            break;
+                        }
+                    }
+                    useSave = useSaveString == "y";
+                }
+            } catch { }
         }
-        Console.Write("Please enter the source directory: ");
-        string source = Console.ReadLine();
-        Console.Write("Please enter the target directory: ");
-        string target = Console.ReadLine();
-        Console.Write("Would you like to save your directory preferences? y/n  ");
-        string saveString = Console.ReadLine();
-        while(true) {
-            if(saveString != "y" && saveString != "n") {
-                Console.Write("Would you live to save your directory preferences? y/n  ");
-                saveString = Console.ReadLine();
-            } else {
-                break;
+        string source = "";
+        string target = "";
+        string saveString = "";
+        if(!useSave) {
+            Console.Write("Please enter the source directory:  ");
+            source = Console.ReadLine();
+            Console.Write("Please enter the target directory:  ");
+            target = Console.ReadLine();
+            Console.Write("Would you like to save your directory preferences? y/n  ");
+            saveString = Console.ReadLine();
+            while(true) {
+                if(saveString != "y" && saveString != "n") {
+                    Console.Write("Would you like to save your directory preferences? y/n  ");
+                    saveString = Console.ReadLine();
+                } else {
+                    break;
+                }
             }
         }
+        try {
+            if(useSave && saves.EndsWith("&")) {
+                source = savesArray[0];
+                Console.Write("Please enter the target directory:  ");
+                target = Console.ReadLine();
+                Console.Write("Would you like to save your directory preferences? y/n  ");
+                saveString = Console.ReadLine();
+                while(true) {
+                    if(saveString != "y" && saveString != "n") {
+                        Console.Write("Would you like to save your directory preferences? y/n  ");
+                        saveString = Console.ReadLine();
+                    } else {
+                        break;
+                    }
+                }
+            }
+        } catch { }
+        try {
+            if(useSave && saves[0] == '&') {
+                Console.Write("Please enter the source directory:  ");
+                source = Console.ReadLine();
+                target = savesArray[1];
+                Console.Write("Would you like to save your directory preferences? y/n  ");
+                saveString = Console.ReadLine();
+                while(true) {
+                    if(saveString != "y" && saveString != "n") {
+                        Console.Write("Would you like to save your directory preferences? y/n  ");
+                        saveString = Console.ReadLine();
+                    } else {
+                        break;
+                    }
+                }
+            }
+        } catch { }
         bool save = saveString == "y";
         string savePreference;
         if(save) {
@@ -42,7 +97,7 @@ internal class Program {
                 }
             }
             if(savePreference == "1") {
-                File.WriteAllText("paths.txt", source);
+                File.WriteAllText("paths.txt", $"{source}&");
             } else if(savePreference == "2") {
                 File.WriteAllText("paths.txt", $"&{target}");
             } else if(savePreference == "3") {
