@@ -5,7 +5,7 @@ You can use FolderChunking as a normal person or as a developer. To get started 
 ## Developer stuff
 
 [Program.cs](Program.cs) contains all the code to get started on the console, but if you want to you can edit and modify all of the files as you wish. The `System` and `System.IO` namespaces contain all of the custom classes/structs of the project.
-### Chunker class
+### `System.IO.Chunker`
 The class to get started with the folder chunking. It contains the source and target directories, as well as many functions for directory/tree manipulation.
 ```cs
 public void GenerateTree()
@@ -23,3 +23,23 @@ Copies the files from `source` to `target`. Currently in it's very early stage, 
 public static long DirectorySize(DirectoryInfo directory)
 ```
 Returns the size (in bytes) of the given directory.
+### `System.Tree`
+The basic class that holds a tree. Here it is used to represent the folder structure.
+```cs
+public Tree(object[] values, string[] parents)
+```
+`values` is the array of values that the individual nodes hold. `parents` is the array of node parent paths.
+```cs
+public TreeNode GetNode(int index)
+```
+Returns the node of the given index.
+### `System.TreeNode`
+The class that represent a node in the tree. It holds a value and maybe a parent.
+```cs
+public TreeNode(object value)
+```
+Creates a node with the value `value`.
+```cs
+public TreeNode(object value, string parent)
+```
+Creates a node with the value `value` and parent `parent`.
