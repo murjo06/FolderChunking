@@ -24,10 +24,6 @@ namespace System.IO {
                 string[] currentValues = new string[files.Length + directories.Length];
                 files.CopyTo(currentValues, 0);
                 directories.CopyTo(currentValues, files.Length);
-                if(currentValues.Length == 0) {
-                    done = true;
-                    break;
-                }
                 for(int i = 0; i < currentValues.Length; i++) {
                     values[index + i] = currentValues[i];
                     parents[index + i] = new Nullable<int>(index);
@@ -41,28 +37,26 @@ namespace System.IO {
         }
 
         public static void TransferFiles(DirectoryInfo source, DirectoryInfo target) {
-            if (source.FullName.ToLower() == target.FullName.ToLower()) {
+            if(source.FullName.ToLower() == target.FullName.ToLower()) {
                 return;
             }
-            if (Directory.Exists(target.FullName) == false) {
+            if(Directory.Exists(target.FullName) == false) {
                 Directory.CreateDirectory(target.FullName);
             }
-            foreach (FileInfo file in source.GetFiles()) {
+            foreach(FileInfo file in source.GetFiles()) {
                 file.CopyTo(Path.Combine(target.ToString(), file.Name), true);
             }
-            foreach (DirectoryInfo directorySourceSub in source.GetDirectories()) {
+            foreach(DirectoryInfo directorySourceSub in source.GetDirectories()) {
                 DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(directorySourceSub.Name);
                 TransferFiles(directorySourceSub, nextTargetSubDir);
             }
         }
         public static long DirectorySize(DirectoryInfo directory) {
             long size = 0;
-            FileInfo[] files = directory.GetFiles();
-            foreach (FileInfo file in files) {
+            foreach (FileInfo file in directory.GetFiles()) {
                 size += file.Length;
             }
-            DirectoryInfo[] directories = directory.GetDirectories();
-            foreach (DirectoryInfo directoryInfo in directories) {
+            foreach (DirectoryInfo directoryInfo in directory.GetDirectories()) {
                 size += DirectorySize(directoryInfo);
             }
             return size;
