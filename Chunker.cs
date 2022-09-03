@@ -17,13 +17,16 @@ namespace System.IO {
             values[0] = from.FullName;
             parents[0] = null;
             int index = 1;
+            string usedDirectory = "";
             while(!done) {
                 string[] files = Directory.GetFiles(from.FullName, "*", SearchOption.TopDirectoryOnly);
                 string[] directories = Directory.GetDirectories(from.FullName, "*", SearchOption.TopDirectoryOnly);
                 string[] currentValues = new string[files.Length + directories.Length];
+                files.CopyTo(currentValues, 0);
+                directories.CopyTo(currentValues, files.Length);
                 if(currentValues.Length == 0) {
                     done = true;
-                    continue;
+                    break;
                 }
                 for(int i = 0; i < currentValues.Length; i++) {
                     values[index + i] = currentValues[i];
