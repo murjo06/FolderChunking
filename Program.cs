@@ -97,9 +97,9 @@ internal class Program {
                 }
             }
             if(savePreference == "1") {
-                File.WriteAllText("paths.txt", $"{source}&");
+                File.WriteAllText("paths.txt", $"{source}&" + savesArray[1]);
             } else if(savePreference == "2") {
-                File.WriteAllText("paths.txt", $"&{target}");
+                File.WriteAllText("paths.txt", savesArray[0] + $"&{target}");
             } else if(savePreference == "3") {
                 File.WriteAllText("paths.txt", $"{source}&{target}");
             }
