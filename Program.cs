@@ -100,5 +100,8 @@ internal class Program {
                 File.WriteAllText("paths.txt", $"{source}&{target}");
             }
         }
+        Chunker chunker = new Chunker(source, target);
+        chunker.GenerateTree();
+        chunker.StartChonk();
     }
 }
