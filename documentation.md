@@ -43,3 +43,5 @@ Creates a node with the value `value`.
 public TreeNode(object value, string parent)
 ```
 Creates a node with the value `value` and parent `parent`.
+
+This is not at all the finished version! I plan to add a much more in-depth guide, but for now it'll do just fine
