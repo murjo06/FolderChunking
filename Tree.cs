@@ -7,7 +7,7 @@ namespace System {
             nodes = new TreeNode[values.Length];
             var i = 0;
             foreach(object value in values) {
-                nodes[i] = new TreeNode(value, this, parents[i]);
+                nodes[i] = new TreeNode(value, parents[i]);
                 i++;
             }
         }
