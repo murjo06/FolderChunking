@@ -3,7 +3,7 @@ namespace System {
         public TreeNode[] nodes;
         public int Length {get {return nodes.Length;}}
 
-        public Tree(object[] values, Nullable<int>[] parents) {
+        public Tree(object[] values, string[] parents) {
             nodes = new TreeNode[values.Length];
             var i = 0;
             foreach(object value in values) {

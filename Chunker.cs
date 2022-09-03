@@ -11,24 +11,18 @@ namespace System.IO {
         }
 
         public void GenerateTree() {
-            bool done = false;
-            object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories).Length];
-            Nullable<int>[] parents = new Nullable<int>[values.Length];
+            object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories).Length + 1];
+            string[] parents = new string[values.Length];
             values[0] = from.FullName;
-            parents[0] = null;
-            int index = 1;
-            string usedDirectory = "";
-            while(!done) {
-                string[] files = Directory.GetFiles(from.FullName, "*", SearchOption.TopDirectoryOnly);
-                string[] directories = Directory.GetDirectories(from.FullName, "*", SearchOption.TopDirectoryOnly);
-                string[] currentValues = new string[files.Length + directories.Length];
-                files.CopyTo(currentValues, 0);
-                directories.CopyTo(currentValues, files.Length);
-                for(int i = 0; i < currentValues.Length; i++) {
-                    values[index + i] = currentValues[i];
-                    parents[index + i] = new Nullable<int>(index);
-                }
-                index += currentValues.Length;
+            parents[0] = "";
+            string[] files = Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories);
+            string[] directories = Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories);
+            string[] currentValues = new string[files.Length + directories.Length];
+            files.CopyTo(currentValues, 0);
+            directories.CopyTo(currentValues, files.Length);
+            for(int i = 1; i <= currentValues.Length; i++) {
+                values[i] = currentValues[i];
+                parents[i] = Directory.GetParent(currentValues[i]).FullName;
             }
             tree = new Tree(values, parents);
         }
