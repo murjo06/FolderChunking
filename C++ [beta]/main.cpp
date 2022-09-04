@@ -106,13 +106,14 @@ int main() {
             }
         }
         if(savePreference == "1") {
-            saveFile << source + "&" + savesArray[1];
+            saveFile << source << "&" << savesArray[1];
         } else if(savePreference == "2") {
-            saveFile << savesArray[0] + "&" + target;
+            saveFile << savesArray[0] << "&" << target;
         } else if(savePreference == "3") {
-            saveFile << source + "&" + target;
+            saveFile << source << "&" << target;
         }
     }
+    saveFile.close();
     chunker chunker(source, target);
     //chunker.GenerateTree();
     //chunker.StartChonk();
