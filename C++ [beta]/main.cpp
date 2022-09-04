@@ -1,11 +1,12 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
+#include <array>
+#include <chunker.h>
 using namespace std;
 
 int main() {
-    fstream saveFile;
-    saveFile.open("paths.txt");
+    fstream saveFile("paths.txt");
     bool saved = false;
     if(saveFile) {
         saved = true;
@@ -14,103 +15,107 @@ int main() {
     }
     bool useSave = false;
     string saves = "";
-    string savesArray[2] = {"", ""};
+    array<string, 2> savesArray;
     if(saved) {
         getline(saveFile, saves);
         try { 
             savesArray = split(saves, '&');
-            if(savesArray.Length > 1 && savesArray[0] != "" && savesArray[1] != "") {
-                Console.Write("Usable save file detected. Would you like to use it's data? y/n  ");
-                string useSaveString = Console.ReadLine();
+            if(savesArray[0] != "" && savesArray[1] != "") {
+                cout << "Usable save file detected. Would you like to use it's data? y/n  ";
+                string useSaveString;
+                cin >> useSaveString;
                 while(true) {
                     if(useSaveString != "y" && useSaveString != "n") {
-                        Console.Write("Usable save file detected. Would you like to use it's data? y/n  ");
-                        useSaveString = Console.ReadLine();
+                        cout << "Usable save file detected. Would you like to use it's data? y/n  ";
+                        cin >> useSaveString;
                     } else {
                         break;
                     }
                 }
                 useSave = useSaveString == "y";
             }
-        } catch() { }
+            throw(0);
+        } catch(int n) { }
     }
     string source = "";
     string target = "";
     string saveString = "";
     if(!useSave) {
-        Console.Write("Please enter the source directory:  ");
-        source = Console.ReadLine();
-        Console.Write("Please enter the target directory:  ");
-        target = Console.ReadLine();
-        Console.Write("Would you like to save your directory preferences? y/n  ");
-        saveString = Console.ReadLine();
+        cout << "Please enter the source directory:  ";
+        cin >> source;
+        cout << "Please enter the target directory:  ";
+        cin >> target;
+        cout << "Would you like to save your directory preferences? y/n  ";
+        cin >> saveString;
         while(true) {
             if(saveString != "y" && saveString != "n") {
-                Console.Write("Would you like to save your directory preferences? y/n  ");
-                saveString = Console.ReadLine();
+                cout << "Would you like to save your directory preferences? y/n  ";
+                cin >> saveString;
             } else {
                 break;
             }
         }
     }
     try {
-        if(useSave && saves.EndsWith("&")) {
+        if(useSave && saves[lenght(saves) - 1] == '&') {
             source = savesArray[0];
-            Console.Write("Please enter the target directory:  ");
-            target = Console.ReadLine();
-            Console.Write("Would you like to save your directory preferences? y/n  ");
-            saveString = Console.ReadLine();
+            cout << "Please enter the target directory:  ";
+            cin >> target;
+            cout << "Would you like to save your directory preferences? y/n  ";
+            cin >> saveString;
             while(true) {
                 if(saveString != "y" && saveString != "n") {
-                    Console.Write("Would you like to save your directory preferences? y/n  ");
-                    saveString = Console.ReadLine();
+                    cout << "Would you like to save your directory preferences? y/n  ";
+                    cin >> saveString;
                 } else {
                     break;
                 }
             }
         }
-    } catch { }
+        throw(0);
+    } catch(int n) { }
     try {
         if(useSave && saves[0] == '&') {
-            Console.Write("Please enter the source directory:  ");
-            source = Console.ReadLine();
+            cout << "Please enter the source directory:  ";
+            cin >> source;
             target = savesArray[1];
-            Console.Write("Would you like to save your directory preferences? y/n  ");
-            saveString = Console.ReadLine();
+            cout << "Would you like to save your directory preferences? y/n  ";
+            cin >> saveString;
             while(true) {
                 if(saveString != "y" && saveString != "n") {
-                    Console.Write("Would you like to save your directory preferences? y/n  ");
-                    saveString = Console.ReadLine();
+                    cout << "Would you like to save your directory preferences? y/n  ";
+                    cin >> saveString;
                 } else {
                     break;
                 }
             }
         }
-    } catch { }
+        throw(0);
+    } catch(int n) { }
     bool save = saveString == "y";
     string savePreference;
     if(save) {
-        Console.Write("\n1 - save source, 2 - save target, 3 - save both  ");
-        savePreference = Console.ReadLine();
+        cout << "\n1 - save source, 2 - save target, 3 - save both  ";
+        cin >> savePreference;
         while(true) {
             if(savePreference != "1" && savePreference != "2" && savePreference != "3") {
-                Console.Write("\n1 - save source, 2 - save target, 3 - save both  ");
-                savePreference = Console.ReadLine();
+                cout << "\n1 - save source, 2 - save target, 3 - save both  ";
+                cin >> savePreference;
             } else {
                 break;
             }
         }
         if(savePreference == "1") {
-            File.WriteAllText("paths.txt", $"{source}&" + savesArray[1]);
+            saveFile << source + "&" + savesArray[1];
         } else if(savePreference == "2") {
-            File.WriteAllText("paths.txt", savesArray[0] + $"&{target}");
+            saveFile << savesArray[0] + "&" + target;
         } else if(savePreference == "3") {
-            File.WriteAllText("paths.txt", $"{source}&{target}");
+            saveFile << source + "&" + target;
         }
     }
-    chunker chunker = new Chunker(source, target);
-    chunker.GenerateTree();
-    chunker.StartChonk();
+    chunker chunker(source, target);
+    //chunker.GenerateTree();
+    //chunker.StartChonk();
     return 0;
 }
 int lenght(string str) {
@@ -120,8 +125,9 @@ int lenght(string str) {
     }
     return length;
 }
-void split(string str, char seperator) {
+array<string, 2> split(string str, char seperator) {
     int currIndex = 0, i = 0;
+    array<string, 2> strings;
     int startIndex = 0, endIndex = 0;
     while (i <= lenght(str)) {
         if (str[i] == seperator || i == lenght(str)) {
@@ -134,4 +140,5 @@ void split(string str, char seperator) {
         }
         i++;
     }
+    return strings;
 }
