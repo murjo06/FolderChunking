@@ -14,38 +14,38 @@ The class to get started with the folder chunking. It contains the source and ta
 ```cs
 public void GenerateTree()
 ```
-Creates the directory tree for chunking. Very memory intense at the start, but it's worth it if you have a lot of data.
+> Creates the directory tree for chunking. Very memory intense at the start, but it's worth it if you have a lot of data.
 ```cs
 public void StartChonk()
 ```
-Well... starts the chonking behaviour.
+> Well... starts the chonking behaviour.
 ```cs
 public static void TransferFiles(DirectoryInfo source, DirectoryInfo target)
 ```
-Copies the files from `source` to `target`. Currently in it's very early stage, so it's not the fastest.
+> Copies the files from `source` to `target`. Currently in it's very early stage, so it's not the fastest. It is **not** neccesarry to call TransferFiles() if you already called StartChonk().
 ```cs
 public static long DirectorySize(DirectoryInfo directory)
 ```
-Returns the size (in bytes) of the given directory.
+> Returns the size (in bytes) of the given directory.
 ### `System.Tree`
 The basic class that holds a tree. Here it is used to represent the folder structure.
 ```cs
 public Tree(object[] values, string[] parents)
 ```
-`values` is the array of values that the individual nodes hold. `parents` is the array of node parent paths.
+> `values` is the array of values that the individual nodes hold. `parents` is the array of node parent paths.
 ```cs
 public TreeNode GetNode(int index)
 ```
-Returns the node of the given index.
+> Returns the node of the given index.
 ### `System.TreeNode`
 The class that represent a node in the tree. It holds a value and maybe a parent.
 ```cs
 public TreeNode(object value)
 ```
-Creates a node with the value `value`.
+> Creates a node with the value `value`.
 ```cs
 public TreeNode(object value, string parent)
 ```
-Creates a node with the value `value` and parent `parent`.
+> Creates a node with the value `value` and parent `parent`.
 
 This is not at all the finished version! I plan to add a much more in-depth guide, but for now it'll do just fine
