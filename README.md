@@ -44,7 +44,7 @@ public TreeNode(object value)
 ```
 > Creates a node with the value `value`.
 ```cs
-public TreeNode(object value, string parent)
+public TreeNode(object value, object parent)
 ```
 > Creates a node with the value `value` and parent `parent`.
 
