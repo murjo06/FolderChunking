@@ -2,7 +2,7 @@
 An efficient (with less CPU load) way to transfer chonky folders\
 Currently prioritizing C#, but I plan to add C++ support too :D
 
-===
+========================
 
 You can use FolderChunking as a normal person or as a developer. To get started with the basic stuff you need [.NET SDK](https://dotnet.microsoft.com/en-us/download) installed. After you have that you can either run [run.sh](run.sh) or type `dotnet run` in the terminal in the FolderChunking folder. You may need to grant extra permission for the program to execute correctly. Once you run the code follow the instructions to start the file transfer. When inserting the directory locations use the full name with parent foldres and all that. Saved directory locations are stored in [paths.txt](paths.txt), and are seperated by `&`.
 
