@@ -79,6 +79,12 @@ internal class Program {
                 }
             }
         } catch { }
+        try {
+            if(useSave && saves[0] != '&' && !saves.EndsWith("&")) {
+                source = savesArray[0];
+                target = savesArray[1];
+            }
+        } catch { }
         bool save = saveString == "y";
         string savePreference;
         if(save) {

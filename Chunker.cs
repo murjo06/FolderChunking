@@ -11,7 +11,7 @@ namespace System.IO {
         }
 
         public void GenerateTree() {
-            object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories).Length + 1];
+            object[] values = new object[Directory.GetFiles(from.FullName, "*", SearchOption.AllDirectories).Length + Directory.GetDirectories(from.FullName, "*", SearchOption.AllDirectories).Length];
             string[] parents = new string[values.Length];
             values[0] = from.FullName;
             parents[0] = "";
@@ -20,7 +20,7 @@ namespace System.IO {
             string[] currentValues = new string[files.Length + directories.Length];
             files.CopyTo(currentValues, 0);
             directories.CopyTo(currentValues, files.Length);
-            for(int i = 1; i <= currentValues.Length; i++) {
+            for(int i = 0; i < currentValues.Length; i++) {
                 values[i] = currentValues[i];
                 parents[i] = Directory.GetParent(currentValues[i]).FullName;
             }
@@ -34,7 +34,7 @@ namespace System.IO {
             if(source.FullName.ToLower() == target.FullName.ToLower()) {
                 return;
             }
-            if(Directory.Exists(target.FullName) == false) {
+            if(!Directory.Exists(target.FullName)) {
                 Directory.CreateDirectory(target.FullName);
             }
             foreach(FileInfo file in source.GetFiles()) {
@@ -47,10 +47,10 @@ namespace System.IO {
         }
         public static long DirectorySize(DirectoryInfo directory) {
             long size = 0;
-            foreach (FileInfo file in directory.GetFiles()) {
+            foreach(FileInfo file in directory.GetFiles()) {
                 size += file.Length;
             }
-            foreach (DirectoryInfo directoryInfo in directory.GetDirectories()) {
+            foreach(DirectoryInfo directoryInfo in directory.GetDirectories()) {
                 size += DirectorySize(directoryInfo);
             }
             return size;
